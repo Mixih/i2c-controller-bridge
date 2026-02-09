@@ -1,0 +1,26 @@
+= Host to I2C bridge application
+
+== Overview
+
+Utility to noodle around on an i2c bus using a validated hardware i2c core. Some example
+usecases:
+
+- Programming TI battery gauges
+- Initializing I2C eeproms without a I2C programmer
+- Snooping on I2C buses to determine when faults occur
+
+Full FPGA designs are easier to reasonable about than bit-banged microcontroller designs,
+and can be integrated into more advanced tools. E.g. this module can be integrated into a
+custom logic analyzer that snapshots that system bus when certain I2C transactions are
+detected.
+
+== Licensing
+
+Synthesizable IP and testbench code in this repository is licensed under the CERN-OHL-S v2
+license. This is the hardware equivalent to the GNU GPL license, with corresponding
+strongly reciprocal terms that bind derived and incorporating works under the same
+license.
+
+If these license terms are unacceptable for any reason, a commercial-use, non-reciprocal
+license may be negotiated for each closed-source derivative project by contracting NullPID
+Technologies.

@@ -31,9 +31,19 @@
 module i2c_ctlr_ll #(
     parameter DATA_W = 8
 ) (
-    input wire clk
+    input wire clk,
+    input wire rst,
 );
+    localparam STATE_IDLE = 3'd0;
+    localparam STATE_START = 3'd1;
+    localparam STATE_RESTART = 3'd2;
+    localparam STATE_DATA = 3'd3;
+    localparam STATE_CHECK_ACK = 3'd4;
 
-    // TODO: IMPLEMENT
+    reg [2:0] state;
+
+    always @(posedge clk) begin
+        state <= STATE_IDLE;
+    end
 
 endmodule

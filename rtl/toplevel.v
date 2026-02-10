@@ -30,7 +30,7 @@ module toplevel (
     output wire uart_cts,
     // i2c signals
     inout wire scl,
-    inout wire sda
+    inout wire sda,
 );
 
 endmodule

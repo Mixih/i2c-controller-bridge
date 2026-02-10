@@ -27,12 +27,13 @@
 ) (
     input wire clk,
     input wire rst,
+
     input wire wr,
     input wire [DATA_WIDTH - 1:0] din,
     input wire rd,
     output wire [DATA_WIDTH - 1:0] dout,
-    output wire fill_int,
-    output wire drain_int
+    output wire almost_full,
+    output wire almost_empty
 );
 
 endmodule

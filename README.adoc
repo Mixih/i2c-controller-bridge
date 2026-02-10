@@ -9,7 +9,7 @@ usecases:
 - Initializing I2C eeproms without a I2C programmer
 - Snooping on I2C buses to determine when faults occur
 
-Full FPGA designs are easier to reasonable about than bit-banged microcontroller designs,
+Full FPGA designs are easier to reason about than bit-banged microcontroller designs,
 and can be integrated into more advanced tools. E.g. this module can be integrated into a
 custom logic analyzer that snapshots that system bus when certain I2C transactions are
 detected.

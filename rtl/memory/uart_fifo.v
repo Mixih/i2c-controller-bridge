@@ -30,14 +30,35 @@
 ) (
     input wire clk,
     input wire rst,
-    input wire wr_en,
+
+    input wire wr,
     input wire [DATA_WIDTH - 1:0] din,
-    input wire rd_en,
+    input wire rd,
     output wire [DATA_WIDTH - 1:0] dout,
     output wire [FIFO_IDX_W - 1:0] dcount,
-    output wire [1:0] status,
-    output wire [1:0] wstatus,
-    output wire [1:0] error
 );
+    `include "util.vh"
 
+    reg [DATA_WIDTH - 1:0] buf [FIFO_SIZE - 1:0];
+    reg [FIFO_IDX_W:0] rd_i;
+    reg FIFO_IDX_W:0] wr_i;
+
+    always @(posedge clk) begin
+        if (rst) begin
+            rd_i <= 'b0;
+            wr_i <= 'b0;
+        end
+    end
+    //////////////////////////////////////
+    // Formal Properties
+    //////////////////////////////////////
+    `ifdef FORMAL
+        `ifdef UART_FIFO
+            `define ASSUME assume
+            `define MODULE_IS_FORMAL_TOP 1
+        `else
+            `define ASSUME assert
+            `define MODULE_IS_FORMAL_TOP 0
+        `endif
+    `endif
 endmodule

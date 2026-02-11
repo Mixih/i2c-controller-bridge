@@ -7,15 +7,15 @@ module i2c #(
     input wire rst,
 
     // i2c txfifo intf
-    input wire wr_stb;
+    input wire wr_stb,
     // i2c txfifo packet
-    input wire restart;
-    input wire stop;
-    input wire cdm;
-    input wire [WIDTH - 1:0] din;
+    input wire restart,
+    input wire stop,
+    input wire cdm,
+    input wire [WIDTH - 1:0] din,
     // i2c rxfifo intf
-    input wire rd_stb;
-    output wire dout[WIDTH - 1:0];
+    input wire rd_stb,
+    output wire dout[WIDTH - 1:0]
 );
 
 endmodule

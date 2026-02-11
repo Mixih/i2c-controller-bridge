@@ -34,14 +34,24 @@
     input wire wr,
     input wire [DATA_WIDTH - 1:0] din,
     input wire rd,
-    output wire [DATA_WIDTH - 1:0] dout,
-    output wire [FIFO_IDX_W - 1:0] dcount,
+    output reg [DATA_WIDTH - 1:0] dout,
+    output reg [FIFO_IDX_W - 1:0] dcount,
 );
     `include "util.vh"
 
     reg [DATA_WIDTH - 1:0] buf [FIFO_SIZE - 1:0];
     reg [FIFO_IDX_W:0] rd_i;
     reg FIFO_IDX_W:0] wr_i;
+
+    always @(posedge clk) begin : wr_proc
+        if (wr)
+            buf[wr_i] <= din;
+    end
+
+    always @(posedge clk) begin : rd_proc
+        if (rd)
+            dout <= buf[rd_i];
+    end
 
     always @(posedge clk) begin
         if (rst) begin
